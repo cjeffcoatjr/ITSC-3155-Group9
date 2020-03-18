@@ -36,8 +36,5 @@ def test_CanInputAnswer(invoice):
 
 #test for num
 def test_CaninputNumber(invoice):
-
-    ls = [1, 1.0, -1]
-    for i in ls:
-        tmp = invoice.inputNumber(i)
-        assert tmp == i
+    testInputNumber = invoice.inputNumber(1.1)
+    assert testInputNumber == 1.1
