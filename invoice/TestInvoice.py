@@ -27,9 +27,3 @@ def test_CanCalculateTotalDiscount(invoice, products):
 
 def test_CanCalculateTotalPurePrice(invoice, products):
     testTotalPurePrice = invoice.totalPurePrice(products)
-    assert testTotalPurePrice == 69.38
-
-def test_Canadd(invoice):
-    tmp = {'qnt': 1, 'unit_price': 1, 'discount': 10}
-    output = invoice.addProduct(1, 1, 10)
-    assert tmp == output
