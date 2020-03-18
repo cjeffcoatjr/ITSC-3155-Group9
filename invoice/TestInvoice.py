@@ -29,13 +29,15 @@ def test_CanCalculateTotalPurePrice(invoice, products):
     testTotalPurePrice = invoice.totalPurePrice(products)
     assert testTotalPurePrice == 69.38
 
+#test for answer
 def test_CanInputAnswer(invoice):
     testInputAnswer = invoice.inputAnswer("Pen")
     assert testInputAnswer == "Pen"
 
 #test for num
-def test_inputNumber() :
+def test_CaninputNumber(invoice):
+
     ls = [1, 1.0, -1]
-    for i in ls :
-        tmp = invoice.inputNumber(invoice, i)
+    for i in ls:
+        tmp = invoice.inputNumber(i)
         assert tmp == i
