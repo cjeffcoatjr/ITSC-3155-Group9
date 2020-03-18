@@ -37,8 +37,7 @@ def test_CanAddProduct(invoice):
 
 # test Invoice.removeQuantity
 def test_removeQuantity(invoice):
-    tmp = {'qnt': 2, 'unit_price': 1, 'discount': 10}
+    tmp = {'qnt': 1, 'unit_price': 1, 'discount': 10}
     invoice.addProduct(2,1,10)
     output = invoice.removeQuantity(1)
-    tmp2 = {'qnt': 1, 'unit_price': 1, 'discount': 10}
-    assert tmp2 == output
+    assert tmp == output
