@@ -1,5 +1,5 @@
 import pytest
-from Invoice import Invoice
+from invoice import Invoice
 
 
 @pytest.fixture()
@@ -29,15 +29,17 @@ def test_CanCalculateTotalPurePrice(invoice, products):
     testTotalPurePrice = invoice.totalPurePrice(products)
     assert testTotalPurePrice == 69.38
 
+
 # test Invoice.addProduct
 def test_CanAddProduct(invoice):
     tmp = {'qnt': 1, 'unit_price': 1, 'discount': 10}
     output = invoice.addProduct(1, 1, 10)
     assert tmp == output
 
+
 # test Invoice.removeQuantity
 def test_removeQuantity(invoice):
     tmp = {'qnt': 1, 'unit_price': 1, 'discount': 10}
-    invoice.addProduct(2,1,10)
+    invoice.addProduct(2, 1, 10)
     output = invoice.removeQuantity(1)
     assert tmp == output
