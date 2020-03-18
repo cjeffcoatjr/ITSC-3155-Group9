@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ce271260-e36d-4e73-8546-39a5781ef418" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Invoice.py" beforeDir="false" afterPath="$PROJECT_DIR$/Invoice.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestInvoice.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestInvoice.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +35,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1584564489999</updated>
-      <workItem from="1584564995770" duration="2401000" />
+      <workItem from="1584564995770" duration="3341000" />
     </task>
     <servers />
   </component>
@@ -48,9 +47,9 @@
       <screen x="0" y="28" width="3440" height="1412" />
     </state>
     <state x="661" y="345" key="SettingsEditor/0.28.3440.1412@0.28.3440.1412" timestamp="1584565014790" />
-    <state x="835" y="537" key="com.intellij.ide.util.TipDialog" timestamp="1584564998910">
+    <state x="835" y="537" key="com.intellij.ide.util.TipDialog" timestamp="1584568420280">
       <screen x="0" y="28" width="3440" height="1412" />
     </state>
-    <state x="835" y="537" key="com.intellij.ide.util.TipDialog/0.28.3440.1412@0.28.3440.1412" timestamp="1584564998910" />
+    <state x="835" y="537" key="com.intellij.ide.util.TipDialog/0.28.3440.1412@0.28.3440.1412" timestamp="1584568420280" />
   </component>
 </project>
