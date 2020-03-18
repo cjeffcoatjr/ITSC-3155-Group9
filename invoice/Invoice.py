@@ -39,7 +39,7 @@ class Invoice:
         while True:
             try:
                 userInput = float(input(input_value))
-            except:
+            except ValueError:
                 print("Not a number! Try again.")
             else:
                 return userInput
