@@ -1,5 +1,5 @@
 import pytest
-from invoice import Invoice
+from Invoice import Invoice
 
 
 @pytest.fixture()
