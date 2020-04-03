@@ -7,6 +7,9 @@ df = pd.read_csv('../Datasets/CoronaTimeSeries.csv')
 df['Date'] = pd.to_datetime(df['Date'])
 
 # Preparing data
+#create scatter elements with the x being date for all
+#the y is individual for each for death, recovered, unrecovred
+#add them to a list
 trace1 = go.Scatter(x=df['Date'], y=df['Death'], mode='lines', name='Death')
 trace2 = go.Scatter(x=df['Date'], y=df['Recovered'], mode='lines', name='Recovered')
 trace3 = go.Scatter(x=df['Date'], y=df['Unrecovered'], mode='lines', name='Unrecovered')

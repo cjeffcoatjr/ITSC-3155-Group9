@@ -6,6 +6,7 @@ import pandas as pd
 df = pd.read_csv('../Datasets/CoronaTimeSeries.csv')
 
 # Preparing data
+# Sets up both the x and y axis of the graph, adds all the Recovered values to a list and sets the graph colors.
 data = [go.Heatmap(x=df['Day'],
                   y=df['WeekofMonth'],
                   z=df['Recovered'].values.tolist(),

@@ -22,6 +22,9 @@ new_df = df.groupby(['Country']).agg(
 new_df = new_df.sort_values(by=['Confirmed'], ascending=[False]).head(20).reset_index()
 
 # Preparing data
+# use the plotly graph object to create a 3 bars with x axis as country
+# each of the y's will be different being Unrecovered, Recovered, Deaths
+# the color of each is the noted and each of the bars is stored in a list
 trace1 = go.Bar(x=new_df['Country'], y=new_df['Unrecovered'], name='Unrecovered', marker={'color': '#CD7F32'})
 trace2 = go.Bar(x=new_df['Country'], y=new_df['Recovered'], name='Recovered', marker={'color': '#9EA0A1'})
 trace3 = go.Bar(x=new_df['Country'], y=new_df['Deaths'], name='Deaths', marker={'color': '#FFD700'})
