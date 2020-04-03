@@ -25,6 +25,11 @@ data = [
                marker=dict(size=new_df['Confirmed'] / 100,color=new_df['Confirmed'] / 100, showscale=True))
 ]
 
+# The .scatter method from plotly.graph_objs denotes the creation of a scatterplot.
+# Following this are 5 parameters, one which sets the label of the x-axis, one which sets the label of the y-axis,
+# one of which denotes what each scatter represents, one of which denotes the method to scatter,
+# and the last of which denotes the grid for the chart.
+
 # Preparing layout
 layout = go.Layout(title='Corona Virus Confirmed Cases', xaxis_title="Recovered Cases",
                    yaxis_title="Unrecovered Cases", hovermode='closest')

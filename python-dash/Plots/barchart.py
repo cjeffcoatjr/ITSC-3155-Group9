@@ -20,6 +20,9 @@ new_df = new_df.sort_values(by=['Confirmed'], ascending=[False]).head(20)
 # Preparing data
 data = [go.Bar(x=new_df['State'], y=new_df['Confirmed'])]
 
+# The .bar method from plotly.graph_objs denotes the creation of a bar chart.
+# Following this are 2 parameters, one which sets the label of the x-axis and one which sets the label of the y-axis.
+
 # Preparing layout
 layout = go.Layout(title='Corona Virus Confirmed Cases in The US', xaxis_title="States",
                    yaxis_title="Number of confirmed cases")
