@@ -74,24 +74,24 @@ app.layout = html.Div(children=[
               ),
     html.Hr(style={'color': '#7FDBFF'}),
     html.H3('Line chart', style={'color': '#df2e56'}),
-    html.Div('This line chart represent the Corona Virus confirmed cases of all reported cases in the given period.'),
+    html.Div('This line chart represent the mean temperature in the given period.'),
     dcc.Graph(id='graph4',
            figure={
                'data': data_linechart,
-               'layout': go.Layout(title='Corona Virus Confirmed Cases From 2020-01-22 to 2020-03-17',
-                                       xaxis={'title': 'Date'}, yaxis={'title': 'Number of cases'})
+               'layout': go.Layout(title='Mean temperatures over time',
+                                       xaxis={'title': 'Date'}, yaxis={'title': 'Temperature'})
                }
                ),
     html.Hr(style={'color': '#7FDBFF'}),
     html.H3('Multi Line chart', style={'color': '#df2e56'}),
     html.Div(
-        'This line chart represent the CoronaVirus death, recovered and under treatment cases of all reported cases in the given period.'),
+        'This line chart represents temperature highs and lows in the given period.'),
     dcc.Graph(id='graph5',
               figure={
                   'data': data_multiline,
                   'layout': go.Layout(
-                      title='Corona Virus Death, Recovered and under treatment Cases From 2020-01-22 to 2020-03-17',
-                      xaxis={'title': 'Date'}, yaxis={'title': 'Number of cases'})
+                      title='Temperature averages',
+                      xaxis={'title': 'Date'}, yaxis={'title': 'Temperature'})
               }
               ),
     # html.Hr(style={'color': '#7FDBFF'}),
@@ -109,12 +109,12 @@ app.layout = html.Div(children=[
     html.Hr(style={'color': '#7FDBFF'}),
     html.H3('Heat map', style={'color': '#df2e56'}),
     html.Div(
-        'This heat map represent the Corona Virus recovered cases of all reported cases per day of week and week of month.'),
+        'This heat map represent the mean temperature per day of week and month.'),
     dcc.Graph(id='graph7',
               figure={
                   'data': data_heatmap,
-                  'layout': go.Layout(title='Corona Virus Recovered Cases',
-                                      xaxis={'title': 'Day of Week'}, yaxis={'title': 'Week of Month'})
+                  'layout': go.Layout(title='Temperature over the year',
+                                      xaxis={'title': 'Day of Week'}, yaxis={'title': 'Month'})
               }
               )
 ])
