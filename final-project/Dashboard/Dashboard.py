@@ -19,6 +19,6 @@ app.layout = html.Div(children=[
     html.Hr(style={'color': '#7FDBFF'}),
     html.H3('This interactive map visualizes COVID-19 impact across the United States of America and Wyoming.',
             style={'color': '#df2e56'}),
-    dcc.Graph(figure=interactive_map)
+    dcc.Graph(id='COVID-19 in the United States of America and Wyoming', figure=interactive_map)
 ])
 app.run_server()
