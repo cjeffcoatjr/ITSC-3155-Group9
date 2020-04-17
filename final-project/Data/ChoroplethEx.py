@@ -91,7 +91,7 @@ fig = go.Figure(data=go.Choropleth(
 
 
 fig.update_layout(
-    title_text='Covid-19 In the United States and Wyoming',
+    #title_text='Covid-19 In the United States and Wyoming',
     geo = dict(
         scope='usa',
         projection=go.layout.geo.Projection(type = 'albers usa'),
