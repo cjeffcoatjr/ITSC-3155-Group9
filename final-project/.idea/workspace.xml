@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c368de44-5344-47db-8bbe-83760cfbf78b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/final-project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/final-project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/ChoroplethEx.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ChoroplethEx.py" afterDir="false" />
-    </list>
+    <list default="true" id="c368de44-5344-47db-8bbe-83760cfbf78b" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,7 +18,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1agcSbQobxYIxVzgEao7uOj1Lv7" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -48,6 +45,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Data/ChoroplethEx.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -97,11 +95,11 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state width="1256" height="411" key="GridCell.Tab.0.right/0.0.2560.1440/2560.0.1920.1080@0.0.2560.1440" timestamp="1587162724603" />
-    <state x="909" y="366" key="SettingsEditor" timestamp="1587162122901">
-      <screen x="0" y="0" width="2560" height="1440" />
+    <state x="1221" y="366" key="SettingsEditor" timestamp="1587163008630">
+      <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state x="909" y="366" key="SettingsEditor/0.0.2560.1440/2560.0.1920.1080@0.0.2560.1440" timestamp="1587162122901" />
-    <state x="1221" y="366" key="SettingsEditor/0.0.3440.1440@0.0.3440.1440" timestamp="1587160827244" />
+    <state x="1221" y="366" key="SettingsEditor/0.0.3440.1440@0.0.3440.1440" timestamp="1587163008630" />
     <state x="1616" y="545" key="com.intellij.ide.util.TipDialog" timestamp="1587162104378">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
