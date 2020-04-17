@@ -11,7 +11,7 @@ else:
 
 df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv')
 # df = pd.read_json(stateDict)
-# This is a test
+
 for col in df.columns:
     df[col] = df[col].astype(str)
 
@@ -37,8 +37,10 @@ fig.update_layout(
     geo = dict(
         scope='usa',
         projection=go.layout.geo.Projection(type = 'albers usa'),
-        showlakes=True, # lakes
-        lakecolor='rgb(255, 255, 255)'),
+        showlakes=False, # lakes
+        lakecolor='rgb(0, 0, 255)'),
 )
+def get_fig():
+    return fig
 
 fig.show()
