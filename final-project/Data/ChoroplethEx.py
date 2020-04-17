@@ -78,10 +78,10 @@ states = {
 for col in df.columns:
     df[col] = df[col].astype(str)
 
-df['text'] = df['state'] + '<br>' + \
-    'Beef ' + df['beef'] + ' Dairy ' + df['dairy'] + '<br>' + \
-    'Fruits ' + df['total fruits'] + ' Veggies ' + df['total veggies'] + '<br>' + \
-    'Wheat ' + df['wheat'] + ' Corn ' + df['corn']
+# df['text'] = df['state'] + '<br>' + \
+#     'Beef ' + df['beef'] + ' Dairy ' + df['dairy'] + '<br>' + \
+#     'Fruits ' + df['total fruits'] + ' Veggies ' + df['total veggies'] + '<br>' + \
+#     'Wheat ' + df['wheat'] + ' Corn ' + df['corn']
 
 fig = go.Figure(data=go.Choropleth(
     locations=df['state'],
