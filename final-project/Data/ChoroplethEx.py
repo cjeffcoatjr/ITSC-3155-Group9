@@ -16,8 +16,8 @@ df = pd.read_json(stateDict)
 
 states = states.states
 
-for col in df.columns:
-    df[col] = df[col].astype(str)
+# for col in df.columns:
+#     df[col] = df[col].astype(str)
 
 # df['text'] = df['state'] + '<br>' + \
 #     'Beef ' + df['beef'] + ' Dairy ' + df['dairy'] + '<br>' + \
@@ -26,14 +26,13 @@ for col in df.columns:
 
 fig = go.Figure(data=go.Choropleth(
     locations=df['state'],
-    z=df['total exports'].astype(float),
+    z=df['cases'].astype(float),
     locationmode='USA-states',
     colorscale='Reds',
     autocolorscale=False,
-    text=df['text'],  # hover text
+    text=df['deaths'],  # hover text
     marker_line_color='white',  # line markers between states
-    colorbar_title="Infected",
-    geoJSON=True,
+    colorbar_title="Infected"
 ))
 
 fig.update_layout(
