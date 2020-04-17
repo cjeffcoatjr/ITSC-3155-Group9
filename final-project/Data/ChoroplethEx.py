@@ -2,15 +2,20 @@ import plotly.graph_objects as go
 import requests
 import pandas as pd # Load data frame and tidy it.
 
+
 response = requests.get("https://corona.lmao.ninja/v2/states")
 if response.status_code == 200:
-    stateDict = response.json()
+    stateDict = response.text
+
+
 else:
     print("error, server responded with status code of" + str(response.status_code))
     exit(-1)
+#df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv')
+df = pd.read_json(stateDict)
 
-df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv')
-#df = pd.read_json(stateDict)
+
+
 states = {
         'AK': 'Alaska',
         'AL': 'Alabama',
@@ -79,14 +84,15 @@ df['text'] = df['state'] + '<br>' + \
     'Wheat ' + df['wheat'] + ' Corn ' + df['corn']
 
 fig = go.Figure(data=go.Choropleth(
-    locations=df['code'],
+    locations=df['state'],
     z=df['total exports'].astype(float),
     locationmode='USA-states',
     colorscale='Reds',
     autocolorscale=False,
     text=df['text'], # hover text
     marker_line_color='white', # line markers between states
-    colorbar_title="Infected"
+    colorbar_title="Infected",
+    geoJSON=True,
 ))
 
 
