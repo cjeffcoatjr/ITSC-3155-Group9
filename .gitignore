@@ -1,7 +1,6 @@
-invoice/.idea/
-invoice/.pytest_cache/
-invoice/__pycache__/
-python-dash/.idea/
-/final-project/.idea/
-final-project/.idea
-final-project/.idea/
+**/.idea/
+**/.pytest_cache/
+**/__pycache__/
+**/.idea
+**/.pytest_cache
+**/__pycache__
