@@ -4,11 +4,11 @@ from dash.dependencies import Input, Output
 from Data import Choropleth as data
 import dash_core_components as dcc
 import dash_html_components as html
-from Data import Choropleth as chloropleth
+
 
 app = dash.Dash()  # instate the dashboard
 interactive_map = data.get_fig()  # From the data, pull a plotly object
-df = chloropleth.df
+df = data.df
 
 # Layout
 app.layout = html.Div(children=[
