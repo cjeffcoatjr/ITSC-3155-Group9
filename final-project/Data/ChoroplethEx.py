@@ -8,42 +8,19 @@ if response.status_code == 200:
     stateDict = response.text
     statesList = states.stateList
     states = states.states
-  #  statesList = states.statesList
     i = 0
     for el in statesList:
         itm = states[el]
         print(i)
         i = i + 1
-        if el == "West Virginia":
-            stateDict = stateDict.replace(el, "WV")
-        else:
-            stateDict = stateDict.replace(el, itm)
-
-    stateDict = stateDict.replace("West VA", "WV")
+        stateDict = stateDict.replace(el, itm)
+    stateDict = stateDict.replace("West VA", "WV")  # Fix some funsies
     print(stateDict)
-
-
 
 else:
     print("error, server responded with status code of" + str(response.status_code))
     exit(-1)
-# df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv')
 df = pd.read_json(stateDict)
-
-# states = states.states
-# i = 0
-# for el in df:
-#     if el in states.keys():
-#         print(i)
-#         i = i + 1
-#         el = states.get(el)
-# for col in df.columns:
-#     df[col] = df[col].astype(str)
-
-# df['text'] = df['state'] + '<br>' + \
-#     'Beef ' + df['beef'] + ' Dairy ' + df['dairy'] + '<br>' + \
-#     'Fruits ' + df['total fruits'] + ' Veggies ' + df['total veggies'] + '<br>' + \
-#     'Wheat ' + df['wheat'] + ' Corn ' + df['corn']
 
 fig = go.Figure(data=go.Choropleth(
     locations=df['state'],
@@ -57,7 +34,6 @@ fig = go.Figure(data=go.Choropleth(
 ))
 
 fig.update_layout(
-    # title_text='Covid-19 In the United States and Wyoming',
     geo=dict(
         scope='usa',
         projection=go.layout.geo.Projection(type='albers usa'),
