@@ -14,7 +14,13 @@ if response.status_code == 200:
         itm = states[el]
         print(i)
         i = i + 1
-        stateDict = stateDict.replace(el, itm)
+        if el == "West Virginia":
+            stateDict = stateDict.replace(el, "WV")
+        else:
+            stateDict = stateDict.replace(el, itm)
+
+    stateDict = stateDict.replace("West VA", "WV")
+    print(stateDict)
 
 
 
