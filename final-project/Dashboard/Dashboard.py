@@ -1,10 +1,14 @@
 import dash
+import plotly.graph_objects as go
+from dash.dependencies import Input, Output
 from Data import Choropleth as data
 import dash_core_components as dcc
 import dash_html_components as html
+from Data import Choropleth as chloropleth
 
 app = dash.Dash()  # instate the dashboard
 interactive_map = data.get_fig()  # From the data, pull a plotly object
+df = chloropleth.df
 
 # Layout
 app.layout = html.Div(children=[
@@ -43,7 +47,17 @@ app.layout = html.Div(children=[
     dash.dependencies.Output('map', 'figure'),
     [dash.dependencies.Input('select-data', 'value')])
 def update_output(value):
-    return 'You have selected "{}"'.format(value)
+    fig = go.Figure(data=go.Choropleth(
+        locations=df['state'],
+        z=df[value].astype(int),
+        locationmode='USA-states',
+        colorscale='Reds',
+        autocolorscale=False,
+        text=df['text'],  # hover text
+        marker_line_color='white',  # line markers between states
+        colorbar_title="Infected"
+        ))
+    return fig
 
 
 app.run_server()
