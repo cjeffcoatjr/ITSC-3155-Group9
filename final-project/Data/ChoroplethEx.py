@@ -6,6 +6,11 @@ from Data import States as states
 response = requests.get("https://corona.lmao.ninja/v2/states")
 if response.status_code == 200:
     stateDict = response.text
+    states = states.states
+    statesList = states.statesList
+    for el in statesList:
+        stateDict.replace(el, states[el])
+
 
 
 else:
@@ -14,12 +19,13 @@ else:
 # df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv')
 df = pd.read_json(stateDict)
 
-states = states.states
-
-for el in df:
-    if el in states.keys():
-        el = states.get(el)
-
+# states = states.states
+# i = 0
+# for el in df:
+#     if el in states.keys():
+#         print(i)
+#         i = i + 1
+#         el = states.get(el)
 # for col in df.columns:
 #     df[col] = df[col].astype(str)
 
@@ -30,7 +36,7 @@ for el in df:
 
 fig = go.Figure(data=go.Choropleth(
     locations=df['state'],
-    z=df['cases'].astype(float),
+    z=df['cases'].astype(int),
     locationmode='USA-states',
     colorscale='Reds',
     autocolorscale=False,
