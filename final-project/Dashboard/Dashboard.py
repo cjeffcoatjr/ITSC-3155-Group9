@@ -55,8 +55,15 @@ def update_output(value):
         autocolorscale=False,
         text=df['text'],  # hover text
         marker_line_color='white',  # line markers between states
-        colorbar_title="Infected"
+        colorbar_title=value
         ))
+    fig.update_layout(
+        geo=dict(
+            scope='usa',
+            projection=go.layout.geo.Projection(type='albers usa'),
+            showlakes=False),
+    )
+
     return fig
 
 
