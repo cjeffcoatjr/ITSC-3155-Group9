@@ -45,7 +45,10 @@ app.layout = html.Div(children=[
 @app.callback(
     dash.dependencies.Output('map', 'figure'),
     [dash.dependencies.Input('select-data', 'value')])
+
 def update_output(value):
+    layout = go.Layout(
+        height=500)
     fig = go.Figure(data=go.Choropleth(
         locations=df['state'],
         z=df[value].astype(int),
@@ -55,7 +58,8 @@ def update_output(value):
         text=df['text'],  # hover text
         marker_line_color='white',  # line markers between states
         colorbar_title=value
-    ))
+
+    ), layout=layout)
     fig.update_layout(
         geo=dict(
             scope='usa',
