@@ -16,6 +16,10 @@ df = pd.read_json(stateDict)
 
 states = states.states
 
+for el in df:
+    if el in states.keys():
+        el = states.get(el)
+
 # for col in df.columns:
 #     df[col] = df[col].astype(str)
 
