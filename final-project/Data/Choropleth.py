@@ -6,35 +6,35 @@ from Data import States as states
 response = requests.get("https://corona.lmao.ninja/v2/states")
 if response.status_code == 200:
     stateDict = response.text
-    statesList = states.stateList
-    states = states.states
-    i = 0
-    for el in statesList:
-        itm = states[el]
-        stateDict = stateDict.replace(el, itm)
+    for state in states.stateList:
+        abbrev = states.states[state]
+        stateDict = stateDict.replace(state, abbrev)
     stateDict = stateDict.replace("West VA", "WV")  # Fix some funsies
-
-
 else:
     print("error, server responded with status code of" + str(response.status_code))
     exit(-1)
 df = pd.read_json(stateDict)
 
-df['text'] = df['state'] + '<br>' + \
-    'Total Cases: ' + str(df['cases']) + ', New Cases Today: ' + str(df['todayCases']) + '<br>' + \
-    'Total Deaths: ' + str(df['deaths']) + ', New Deaths Today: ' + str(df['todayDeaths']) + '<br>' + \
-    'Active Cases: ' + str(df['active']) + '<br>' + \
-    'Tests Performed: ' + str(df['tests']) + ', Tests Per 1 Million People: ' + str(df['testsPerOneMillion'])
+for col in df.columns:
+    df[col] = df[col].astype(str)
+
+df['text'] = 'Total Cases: ' + df['cases'] + ', New Cases Today: ' + df['todayCases'] + '<br>' + \
+             'Total Deaths: ' + df['deaths'] + ', New Deaths Today: ' + df['todayDeaths'] + '<br>' + \
+             'Active Cases: ' + df['active'] + '<br>' + \
+             'Tests Performed: ' + df['tests'] + ', Tests Per 1 Million People: ' + df['testsPerOneMillion']
+
+colorbar_title = "infected"
+display_by = df['cases'].astype(int)
 
 fig = go.Figure(data=go.Choropleth(
     locations=df['state'],
-    z=df['cases'].astype(int),
+    z=display_by,
     locationmode='USA-states',
     colorscale='Reds',
     autocolorscale=False,
     text=df['text'],  # hover text
     marker_line_color='white',  # line markers between states
-    colorbar_title="Infected"
+    colorbar_title=colorbar_title
 ))
 
 fig.update_layout(
@@ -47,6 +47,3 @@ fig.update_layout(
 
 def get_fig():
     return fig
-
-
-fig.show()
