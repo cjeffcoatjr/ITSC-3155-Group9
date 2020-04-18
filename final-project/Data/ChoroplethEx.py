@@ -6,10 +6,15 @@ from Data import States as states
 response = requests.get("https://corona.lmao.ninja/v2/states")
 if response.status_code == 200:
     stateDict = response.text
+    statesList = states.stateList
     states = states.states
-    statesList = states.statesList
+  #  statesList = states.statesList
+    i = 0
     for el in statesList:
-        stateDict.replace(el, states[el])
+        itm = states[el]
+        print(i)
+        i = i + 1
+        stateDict = stateDict.replace(el, itm)
 
 
 
