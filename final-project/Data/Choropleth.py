@@ -20,13 +20,19 @@ else:
     exit(-1)
 df = pd.read_json(stateDict)
 
+df['text'] = df['state'] + '<br>' + \
+    'Total Cases: ' + str(df['cases']) + ', New Cases Today: ' + str(df['todayCases']) + '<br>' + \
+    'Total Deaths: ' + str(df['deaths']) + ', New Deaths Today: ' + str(df['todayDeaths']) + '<br>' + \
+    'Active Cases: ' + str(df['active']) + '<br>' + \
+    'Tests Performed: ' + str(df['tests']) + ', Tests Per 1 Million People: ' + str(df['testsPerOneMillion'])
+
 fig = go.Figure(data=go.Choropleth(
     locations=df['state'],
     z=df['cases'].astype(int),
     locationmode='USA-states',
     colorscale='Reds',
     autocolorscale=False,
-    text=df['deaths'],  # hover text
+    text=df['text'],  # hover text
     marker_line_color='white',  # line markers between states
     colorbar_title="Infected"
 ))
@@ -35,8 +41,7 @@ fig.update_layout(
     geo=dict(
         scope='usa',
         projection=go.layout.geo.Projection(type='albers usa'),
-        showlakes=False,  # lakes
-        lakecolor='rgb(0, 0, 255)'),
+        showlakes=False),
 )
 
 
