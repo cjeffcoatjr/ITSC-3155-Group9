@@ -5,7 +5,6 @@ from Data import Choropleth as data
 import dash_core_components as dcc
 import dash_html_components as html
 
-
 app = dash.Dash()  # instate the dashboard
 interactive_map = data.get_fig()  # From the data, pull a plotly object
 df = data.df
@@ -56,7 +55,7 @@ def update_output(value):
         text=df['text'],  # hover text
         marker_line_color='white',  # line markers between states
         colorbar_title=value
-        ))
+    ))
     fig.update_layout(
         geo=dict(
             scope='usa',
@@ -70,4 +69,3 @@ def update_output(value):
 
 
 app.run_server()
-

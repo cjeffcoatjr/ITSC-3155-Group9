@@ -23,18 +23,15 @@ df['text'] = 'Total Cases: ' + df['cases'] + ', New Cases Today: ' + df['todayCa
              'Active Cases: ' + df['active'] + '<br>' + \
              'Tests Performed: ' + df['tests'] + ', Tests Per 1 Million People: ' + df['testsPerOneMillion']
 
-colorbar_title = "infected"
-display_by = df['cases'].astype(int)
-
 fig = go.Figure(data=go.Choropleth(
     locations=df['state'],
-    z=display_by,
+    z=df['cases'].astype(int),
     locationmode='USA-states',
     colorscale='Reds',
     autocolorscale=False,
     text=df['text'],  # hover text
     marker_line_color='white',  # line markers between states
-    colorbar_title=colorbar_title
+    colorbar_title="Cases"
 ))
 
 fig.update_layout(
