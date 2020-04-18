@@ -1,5 +1,5 @@
 import dash
-from Data import ChoroplethEx as data
+from Data import Choropleth as data
 import dash_core_components as dcc
 import dash_html_components as html
 
