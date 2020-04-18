@@ -19,8 +19,9 @@ app.layout = html.Div(children=[
     html.Hr(style={'color': '#7FDBFF'}),
     html.H3('This interactive map visualizes COVID-19 impact across the United States of America and Wyoming.',
             style={'color': '#df2e56'}),
-    dcc.Graph(id='COVID-19 in the United States of America and Wyoming', figure=interactive_map),
-    html.Div("Data Options"),
+    dcc.Graph(id='map', figure=interactive_map),
+    html.Br(),
+    html.Div("Data Options", id="dd-output-container"),
     dcc.Dropdown(
         id='select-data',
         options=[
@@ -36,4 +37,14 @@ app.layout = html.Div(children=[
     )
 
 ])
+
+
+@app.callback(
+    dash.dependencies.Output('map', 'figure'),
+    [dash.dependencies.Input('select-data', 'value')])
+def update_output(value):
+    return 'You have selected "{}"'.format(value)
+
+
 app.run_server()
+
