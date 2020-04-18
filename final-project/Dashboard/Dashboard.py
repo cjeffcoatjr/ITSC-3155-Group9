@@ -62,6 +62,8 @@ def update_output(value):
             scope='usa',
             projection=go.layout.geo.Projection(type='albers usa'),
             showlakes=False),
+        LAYOUT={'height': 150,
+                'width': 800}
     )
 
     return fig
