@@ -19,6 +19,21 @@ app.layout = html.Div(children=[
     html.Hr(style={'color': '#7FDBFF'}),
     html.H3('This interactive map visualizes COVID-19 impact across the United States of America and Wyoming.',
             style={'color': '#df2e56'}),
-    dcc.Graph(id='COVID-19 in the United States of America and Wyoming', figure=interactive_map)
+    dcc.Graph(id='COVID-19 in the United States of America and Wyoming', figure=interactive_map),
+    html.Div("Data Options"),
+    dcc.Dropdown(
+        id='select-data',
+        options=[
+            {'label': 'Cases', 'value': 'cases'},
+            {'label': 'Deaths', 'value': 'deaths'},
+            {'label': 'Cases Today', 'value': 'todayCases'},
+            {'label': 'Deaths Today', 'value': 'todayDeaths'},
+            {'label': 'Active Cases', 'value': 'active'},
+            {'label': 'Tests', 'value': 'tests'},
+            {'label': 'Tests Per Million', 'value': 'testsPerOneMillion'}
+        ],
+        value='cases'
+    )
+
 ])
 app.run_server()
