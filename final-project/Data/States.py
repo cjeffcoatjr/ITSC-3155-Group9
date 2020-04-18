@@ -7,7 +7,7 @@ states = {
     'California': 'CA',
     'Colorado': 'CO',
     'Connecticut': 'CT',
-    'District of Columbia': 'DC',
+    'District Of Columbia': 'DC',
     'Delaware': 'DE',
     'Florida': 'FL',
     'Georgia': 'GA',
@@ -117,7 +117,7 @@ states2 = {
     'WY': 'Wyoming'  # <---- YIKES!!!!
 }
 stateList = ["Alabama","Alaska","Arizona","Arkansas","California","Colorado",
-  "Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois",
+  "Connecticut", "District Of Columbia", "Delaware","Florida","Georgia","Hawaii","Idaho","Illinois",
   "Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland",
   "Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana",
   "Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York",
