@@ -11,11 +11,9 @@ if response.status_code == 200:
     i = 0
     for el in statesList:
         itm = states[el]
-        print(i)
-        i = i + 1
         stateDict = stateDict.replace(el, itm)
     stateDict = stateDict.replace("West VA", "WV")  # Fix some funsies
-    print(stateDict)
+
 
 else:
     print("error, server responded with status code of" + str(response.status_code))
