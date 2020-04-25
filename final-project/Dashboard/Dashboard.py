@@ -10,19 +10,20 @@ interactive_map = data.get_fig()  # From the data, pull a plotly object
 df = data.df
 
 # Layout
-app.layout = html.Div(children=[
+app.layout = html.Div( children=[
     html.H1(children='Interactive Dashboard',
             style={
                 'textAlign': 'center',
                 'color': '#ef3e18'
             }
             ),
-    html.Div('A Python Dashboard for COVID-19 Visualization using Plotly', style={'textAlign': 'center'}),
+    html.Div('A Python Dashboard for COVID-19 Visualization using Plotly',
+             style={'textAlign': 'center', 'height': '80px'}, ),
     html.Br(),
     html.Hr(style={'color': '#7FDBFF'}),
     html.H3('This interactive map visualizes COVID-19 impact across the United States of America and Wyoming.',
             style={'color': '#df2e56'}),
-    dcc.Graph(id='map', figure=interactive_map),
+    dcc.Graph(id='map', figure=interactive_map,),
     html.Br(),
     html.Div("Data Options", id="dd-output-container"),
     dcc.Dropdown(
@@ -47,8 +48,9 @@ app.layout = html.Div(children=[
     [dash.dependencies.Input('select-data', 'value')])
 
 def update_output(value):
-    layout = go.Layout(
-        height=500)
+
+    # layout = go.Layout(
+    #     height: 90px)
     fig = go.Figure(data=go.Choropleth(
         locations=df['state'],
         z=df[value].astype(int),
@@ -59,7 +61,7 @@ def update_output(value):
         marker_line_color='white',  # line markers between states
         colorbar_title=value
 
-    ), layout=layout)
+    ), )
     fig.update_layout(
         geo=dict(
             scope='usa',
