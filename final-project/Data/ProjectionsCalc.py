@@ -38,7 +38,7 @@ def future(rate, data):
     tommorow = 0
     i = 0
     while i < 30:
-        tommorow = today * rate
+        tommorow = round(today * rate)
         futures.append(tommorow)
         today = tommorow
         i = i + 1
@@ -83,5 +83,5 @@ for el in abrev:
     futureData = [outWeekCase, outMonthCase, outWeekDeath, outMonthDeath]
     masterList[el] = futureData
 
-print(masterList[abrev[2]][1][2])
+print(masterList["NY"][0][2])
 
