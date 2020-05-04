@@ -28,12 +28,31 @@ def calculate(data):
     return stats
 
 
+def future(rate, data):
+    today = data[29]
+    futures = []
+    tommorow = 0
+    i = 0
+    while i < 30:
+        tommorow = today * rate
+        futures.append(tommorow)
+        today = tommorow
+        i = i + 1
+
+    out = futures[1, 14, 29]
+    return out
+
 
 
 deaths = []
 cases = []
 
-calculate(deaths)
-calculate(cases)
+#deaths rate index 0 is last week growth rate avg, index 1 is last months avg same for cases
+deathsRate = calculate(deaths)
+casesRate = calculate(cases)
+
+#will output anticipated deaths for tommorow, 2 weeks, and one month
+deathDataPoints = future(deathsRate[0], deaths)
+
 
 
