@@ -1,7 +1,7 @@
 # index 0 = 30 days ago
 from statistics import mean
 from Data import States as states
-from Data import Projections as response
+from Data import Projections as projections
 
 
 def calculate(data):
@@ -60,11 +60,11 @@ abrev = list(states.states.values())
 
 print(abrev)
 masterList = {}
-
+response = projections.response
 i = 0
 for el in abrev:
-    cases = (response[el])["cases"]
-    deaths = (response[el])["deaths"]
+    cases = response[el]["cases"]
+    deaths = response[el]["deaths"]
     ratesCase = calculate(cases)
     outWeekCase = future(ratesCase[0], cases)
     outMonthCase = future(ratesCase[1], cases)
