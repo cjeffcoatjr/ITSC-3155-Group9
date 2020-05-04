@@ -11,6 +11,8 @@ def calculate(data):
     present = data[k]
     i = 1
     while(i < len(data) - 1):
+        if past == 0:
+            past = 1
         rate = ((present - past)/past) + 1
         dailyGrowth.append(rate)
 
@@ -41,7 +43,7 @@ def future(rate, data):
         today = tommorow
         i = i + 1
 
-    out = futures[1, 14, 29]
+    out = [futures[0], futures[14], futures[29]]
     return out
 
 
@@ -58,9 +60,15 @@ cases = []
 
 abrev = list(states.states.values())
 
+response = projections.response
+# for state in states.stateList:
+#     abbrev = states.states[state]
+#     response = response.replace(state, abbrev)
+# response = response.replace("West VA", "WV")  # Fix some funsies
+
 print(abrev)
 masterList = {}
-response = projections.response
+#response = projections.response
 i = 0
 for el in abrev:
     cases = response[el]["cases"]
@@ -70,7 +78,7 @@ for el in abrev:
     outMonthCase = future(ratesCase[1], cases)
     ratesDeath = calculate(deaths)
     outWeekDeath = future(ratesDeath[0], deaths)
-    outMonthDeath = future(ratesDeath[1], )
+    outMonthDeath = future(ratesDeath[1], deaths)
     #access by masterlist[state Abrev][type of future calc avg and deaths vs cases] 0 - 3][future points 0 = 1 day ahead, 1 = 14 days ahead, 2 = 30 days ahead]
     futureData = [outWeekCase, outMonthCase, outWeekDeath, outMonthDeath]
     masterList[el] = futureData
