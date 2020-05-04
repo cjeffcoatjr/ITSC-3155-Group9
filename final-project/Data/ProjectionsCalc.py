@@ -1,7 +1,22 @@
 # index 0 = 30 days ago
 from statistics import mean
+import requests
 from Data import States as states
-from Data import Projections as projections
+from Data import ProjectionsData as projections
+from Data import Choropleth as current
+import pandas as pd  # Load data frame and tidy it.
+
+response = requests.get("https://corona.lmao.ninja/v2/states")
+if response.status_code == 200:
+    stateDict = response.json
+    for state in states.stateList:
+        abbrev = states.states[state]
+        stateDict = stateDict.replace(state, abbrev)
+    stateDict = stateDict.replace("West VA", "WV")  # Fix some funsies
+else:
+    print("error, server responded with status code of" + str(response.status_code))
+    exit(-1)
+cur = stateDict
 
 
 def calculate(data):
@@ -32,18 +47,21 @@ def calculate(data):
     return stats
 
 
-def future(rate, data):
+def future(rate, data, state, type):
     today = data[29]
     futures = []
     tommorow = 0
     i = 0
+    total = []
+    total[0] = cur[state][type]
     while i < 30:
         tommorow = round(today * rate)
         futures.append(tommorow)
+        total.append(total[i] + tommorow)
         today = tommorow
         i = i + 1
 
-    out = [futures[0], futures[14], futures[29]]
+    out = [futures[0], futures[14], futures[29], total[0], total[14], total[29]]
     return out
 
 
@@ -74,14 +92,17 @@ for el in abrev:
     cases = response[el]["cases"]
     deaths = response[el]["deaths"]
     ratesCase = calculate(cases)
-    outWeekCase = future(ratesCase[0], cases)
-    outMonthCase = future(ratesCase[1], cases)
+    outWeekCase = future(ratesCase[0], cases, el, 'cases')
+    outMonthCase = future(ratesCase[1], cases, el, 'cases')
     ratesDeath = calculate(deaths)
-    outWeekDeath = future(ratesDeath[0], deaths)
-    outMonthDeath = future(ratesDeath[1], deaths)
+    outWeekDeath = future(ratesDeath[0], deaths, el, 'deaths')
+    outMonthDeath = future(ratesDeath[1], deaths, el, 'deaths')
     #access by masterlist[state Abrev][type of future calc avg and deaths vs cases] 0 - 3][future points 0 = 1 day ahead, 1 = 14 days ahead, 2 = 30 days ahead]
     futureData = [outWeekCase, outMonthCase, outWeekDeath, outMonthDeath]
     masterList[el] = futureData
 
 print(masterList["NY"][0][2])
+print(masterList["NY"][0][5])
+print(masterList["NY"][0][4])
+print(masterList["NY"][2][2])
 

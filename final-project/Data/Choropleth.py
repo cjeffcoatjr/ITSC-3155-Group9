@@ -14,7 +14,6 @@ else:
     print("error, server responded with status code of" + str(response.status_code))
     exit(-1)
 df = pd.read_json(stateDict)
-
 for col in df.columns:
     df[col] = df[col].astype(str)
 
