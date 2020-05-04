@@ -1,23 +1,39 @@
 # index 0 = 30 days ago
 from statistics import mean
 
-k = 1
-data = []
-dailyGrowth = []
-past = data[0]
-present = data[k]
-i = 1
-while(i < len(data) - 1):
-    rate = ((present - past)/past) + 1
-    dailyGrowth.append(rate)
 
-    past = present
-    k = k + 1
+def calculate(data):
+    k = 1
+    dailyGrowth = []
+    past = data[0]
     present = data[k]
-    i = i + 1
+    i = 1
+    while(i < len(data) - 1):
+        rate = ((present - past)/past) + 1
+        dailyGrowth.append(rate)
 
-lastWeek = dailyGrowth[22:29]
+        past = present
+        k = k + 1
+        present = data[k]
+        i = i + 1
 
-lastWeekGrowthRate = mean(lastWeek)
+    lastWeek = dailyGrowth[22:29]
 
-lastMonthGrowthRate = mean(dailyGrowth)
+    lastWeekGrowthRate = mean(lastWeek)
+
+    lastMonthGrowthRate = mean(dailyGrowth)
+
+    stats = [lastWeekGrowthRate, lastMonthGrowthRate]
+
+    return stats
+
+
+
+
+deaths = []
+cases = []
+
+calculate(deaths)
+calculate(cases)
+
+
