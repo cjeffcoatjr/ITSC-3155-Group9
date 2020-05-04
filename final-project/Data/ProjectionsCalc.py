@@ -9,10 +9,8 @@ import pandas as pd  # Load data frame and tidy it.
 response = requests.get("https://corona.lmao.ninja/v2/states")
 if response.status_code == 200:
     stateDict = response.json
-    for state in states.stateList:
-        abbrev = states.states[state]
-        stateDict = stateDict.replace(state, abbrev)
-    stateDict = stateDict.replace("West VA", "WV")  # Fix some funsies
+    for state in stateDict:
+        state['state'] = states.states[state['state']]
 else:
     print("error, server responded with status code of" + str(response.status_code))
     exit(-1)
