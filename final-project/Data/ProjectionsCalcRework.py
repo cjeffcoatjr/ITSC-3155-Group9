@@ -42,7 +42,6 @@ def calculate(data):
     lastWeek = dailyGrowth[22:29]
 
     lastWeekGrowthRate = mean(lastWeek)
-    print(lastWeekGrowthRate)
 
     lastMonthGrowthRate = mean(dailyGrowth)
 
@@ -98,10 +97,16 @@ for el in abrev:
     #access by masterlist[state Abrev][type of future calc avg and deaths vs cases] 0 - 3][future points 0 = 1 day ahead, 1 = 14 days ahead, 2 = 30 days ahead]
     futureData = [outWeekCase, outMonthCase, outWeekDeath, outMonthDeath]
     masterList[el] = futureData
-print("first")
-print(masterList["NY"][0][0])
-print("second")
-print(masterList["NY"][0][2])
 
-print(masterList["NY"][2][2])
+for el in abrev:
+    print("State of " + el)
+    print("Cases in 14 days")
+    print(masterList[el][0][1])
+    print("Cases in 30 days")
+    print(masterList[el][0][2])
+    print("Deaths in 14 days")
+    print(masterList[el][2][1])
+    print("deaths in 30 days")
+    print(masterList[el][2][2])
+
 
