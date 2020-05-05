@@ -11,7 +11,7 @@ if response.status_code == 200:
         stateDict = stateDict.replace(state, abbrev)
     stateDict = stateDict.replace("West VA", "WV")  # Fix some funsies
 else:
-    print("error, server responded with status code of" + str(response.status_code))
+    print("Error, server responded with status code of " + str(response.status_code))
     exit(-1)
 df = pd.read_json(stateDict)
 for col in df.columns:
