@@ -13,12 +13,13 @@ if response.status_code == 200:
         if state['state'] not in states.forbidden_states:
             state['state'] = states.states[state['state']]
 
-    print(stateDict)
 
 else:
     print("error, server responded with status code of" + str(response.status_code))
     exit(-1)
-cur = stateDict
+cur = sorted(stateDict, key = lambda j: j['state'])
+print(cur)
+
 
 
 def calculate(data):
@@ -55,13 +56,14 @@ def future(rate, data, state, type):
     tommorow = 0
     i = 0
     total = []
-    total[0] = cur[state][type]
+    total.append(cur[i][type])
     while i < 30:
         tommorow = round(today * rate)
         futures.append(tommorow)
         total.append(total[i] + tommorow)
         today = tommorow
         i = i + 1
+
 
     out = [futures[0], futures[14], futures[29], total[0], total[14], total[29]]
     return out

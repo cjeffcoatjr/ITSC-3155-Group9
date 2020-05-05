@@ -23,4 +23,4 @@ for state in states.stateList:
         abbrev = states.states[state]
         response[abbrev] = tmp_dict
 
-print(response)
+#print(response)

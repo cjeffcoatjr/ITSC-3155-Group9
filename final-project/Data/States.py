@@ -1,6 +1,6 @@
 forbidden_states = {
     'American Samoa', 'Guam', 'Northern Mariana Islands', 'United States Virgin Islands', 'Puerto Rico',
-    'Veteran Affairs', 'US Military', 'Navajp Nation', 'Federal Prisons', 'Grand Princess Ship', 'Wuhan Repatriated',
+    'Veteran Affairs', 'US Military', 'Navajo Nation', 'Federal Prisons', 'Grand Princess Ship', 'Wuhan Repatriated',
     'Diamond Princess Ship'
 }
 states = {
