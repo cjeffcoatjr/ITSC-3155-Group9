@@ -55,21 +55,19 @@ def future(rate, data, state, type):
     today = data[29]
     futures = []
     tommorow = 0
-    i = 0
+    i = 1
     total = []
-    total.append(cur[i][type])
-    while i < 30:
+    k =0
+    total.append(cur[k][type])
+    while i < 31:
 
-        print(today)
-        tommorow = round(today * rate)
-        futures.append(tommorow)
-        print(tommorow)
-        total.append(total[i] + tommorow)
-        today = tommorow
+
+        futures.append(today * rate ** i)
         i = i + 1
+        k= k + 1
 
 
-    out = [futures[0], futures[14], futures[29], total[0], total[14], total[29]]
+    out = [futures[0], futures[14], futures[29]]
     return out
 
 
@@ -103,10 +101,7 @@ for el in abrev:
 print("first")
 print(masterList["NY"][0][0])
 print("second")
-print(masterList["NY"][0][3])
-
 print(masterList["NY"][0][2])
-print(masterList["NY"][0][5])
-print(masterList["NY"][0][4])
+
 print(masterList["NY"][2][2])
 
