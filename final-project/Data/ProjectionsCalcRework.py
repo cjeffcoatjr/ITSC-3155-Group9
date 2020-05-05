@@ -9,6 +9,7 @@ import pandas as pd  # Load data frame and tidy it.
 response = requests.get("https://corona.lmao.ninja/v2/states")
 if response.status_code == 200:
     stateDict = response.json()
+    #WHAT ON EARTH DID CHRIS DO HERE?
     for state in stateDict:
         if state['state'] not in states.forbidden_states:
             state['state'] = states.states[state['state']]
