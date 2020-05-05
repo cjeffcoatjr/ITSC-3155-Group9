@@ -1,8 +1,12 @@
+forbidden_states = {
+    'American Samoa', 'Guam', 'Northern Mariana Islands', 'United States Virgin Islands', 'Puerto Rico',
+    'Veteran Affairs', 'US Military', 'Navajp Nation', 'Federal Prisons', 'Grand Princess Ship', 'Wuhan Repatriated',
+    'Diamond Princess Ship'
+}
 states = {
     'Alaska': 'AK',
     'Alabama': 'AL',
     'Arkansas': 'AR',
-    #'American Samoa': 'AS',
     'Arizona': 'AZ',
     'California': 'CA',
     'Colorado': 'CO',
@@ -11,7 +15,6 @@ states = {
     'Delaware': 'DE',
     'Florida': 'FL',
     'Georgia': 'GA',
-    #'Guam': 'GU',
     'Hawaii': 'HI',
     'Iowa': 'IA',
     'Idaho': 'ID',
@@ -26,10 +29,8 @@ states = {
     'Michigan': 'MI',
     'Minnesota': 'MN',
     'Missouri': 'MO',
-    #'Northern Mariana Islands': 'MP',
     'Mississippi': 'MS',
     'Montana': 'MT',
-    #'National': 'NA',
     'North Carolina': 'NC',
     'North Dakota': 'ND',
     'Nebraska': 'NE',
@@ -42,7 +43,6 @@ states = {
     'Oklahoma': 'OK',
     'Oregon': 'OR',
     'Pennsylvania': 'PA',
-    #'Puerto Rico': 'PR',
     'Rhode Island': 'RI',
     'South Carolina': 'SC',
     'South Dakota': 'SD',
@@ -50,11 +50,10 @@ states = {
     'Texas': 'TX',
     'Utah': 'UT',
     'Virginia': 'VA',
-    #'Virgin Islands': 'VI',
     'Vermont': 'VT',
     'Washington': 'WA',
     'Wisconsin': 'WI',
-    'West Virginia': 'WV',
+    'West Virginia': 'WV',  # <---- YIKES!!!!
     'Wyoming': 'WY'  # <---- YIKES!!!!
 }
 stateList = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",

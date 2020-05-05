@@ -8,9 +8,13 @@ import pandas as pd  # Load data frame and tidy it.
 
 response = requests.get("https://corona.lmao.ninja/v2/states")
 if response.status_code == 200:
-    stateDict = response.json
+    stateDict = response.json()
     for state in stateDict:
-        state['state'] = states.states[state['state']]
+        if state['state'] not in states.forbidden_states:
+            state['state'] = states.states[state['state']]
+
+    print(stateDict)
+
 else:
     print("error, server responded with status code of" + str(response.status_code))
     exit(-1)
