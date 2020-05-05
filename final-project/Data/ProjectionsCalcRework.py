@@ -83,6 +83,9 @@ response = projections.response
 # response = response.replace("West VA", "WV")  # Fix some funsies
 
 masterList = {}
+
+weekly = {}
+monthly = {}
 #response = projections.response
 i = 0
 for el in abrev:
@@ -98,6 +101,9 @@ for el in abrev:
     #access by masterlist[state Abrev][type of future calc avg and deaths vs cases] 0 - 3][future points 0 = 1 day ahead, 1 = 14 days ahead, 2 = 30 days ahead]
     futureData = [outWeekCase, outWeekDeath, outMonthCase, outMonthDeath]
     masterList[el] = futureData
+
+    weekly[el] = [outWeekCase, outWeekDeath]
+    monthly[el] = [outMonthCase, outMonthDeath]
 
 for el in abrev:
     print("State of " + el)
