@@ -61,7 +61,7 @@ def future(rate, data, state, type):
     while i < 31:
 
 
-        futures.append(today * rate ** i)
+        futures.append(round(today * rate ** i))
         i = i + 1
         k= k + 1
 
@@ -88,14 +88,15 @@ i = 0
 for el in abrev:
     cases = response[el]["cases"]
     deaths = response[el]["deaths"]
-    ratesCase = calculate(cases)
-    outWeekCase = future(ratesCase[0], cases, el, 'cases')
-    outMonthCase = future(ratesCase[1], cases, el, 'cases')
+
     ratesDeath = calculate(deaths)
+    ratesCase = calculate(cases)
+    outMonthCase = future(ratesCase[1], cases, el, 'cases')
+    outWeekCase = future(ratesCase[0], cases, el, 'cases')
     outWeekDeath = future(ratesDeath[0], deaths, el, 'deaths')
     outMonthDeath = future(ratesDeath[1], deaths, el, 'deaths')
     #access by masterlist[state Abrev][type of future calc avg and deaths vs cases] 0 - 3][future points 0 = 1 day ahead, 1 = 14 days ahead, 2 = 30 days ahead]
-    futureData = [outWeekCase, outMonthCase, outWeekDeath, outMonthDeath]
+    futureData = [outWeekCase, outWeekDeath, outMonthCase, outMonthDeath]
     masterList[el] = futureData
 
 for el in abrev:
@@ -105,8 +106,8 @@ for el in abrev:
     print("Cases in 30 days")
     print(masterList[el][0][2])
     print("Deaths in 14 days")
-    print(masterList[el][2][1])
+    print(masterList[el][1][1])
     print("deaths in 30 days")
-    print(masterList[el][2][2])
+    print(masterList[el][1][2])
 
 
