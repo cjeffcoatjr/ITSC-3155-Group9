@@ -2,16 +2,18 @@ import plotly.graph_objects as go
 import pandas as pd
 from Data import BaseData as data
 
+# use the json to build the dataframe
 df = pd.read_json(data.stateDict)
 
+# format the labelling for the map
 for col in df.columns:
     df[col] = df[col].astype(str)
-
 df['text'] = 'Total Cases: ' + df['cases'] + ', New Cases Today: ' + df['todayCases'] + '<br>' + \
              'Total Deaths: ' + df['deaths'] + ', New Deaths Today: ' + df['todayDeaths'] + '<br>' + \
              'Active Cases: ' + df['active'] + '<br>' + \
              'Tests Performed: ' + df['tests'] + ', Tests Per 1 Million People: ' + df['testsPerOneMillion']
 
+# draw the map
 fig = go.Figure(data=go.Choropleth(
     locations=df['state'],
     z=df['cases'].astype(int),
@@ -22,7 +24,6 @@ fig = go.Figure(data=go.Choropleth(
     marker_line_color='white',  # line markers between states
     colorbar_title="Cases"
 ))
-
 fig.update_layout(
     geo=dict(
         scope='usa',

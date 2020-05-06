@@ -3,7 +3,7 @@ import requests
 from Data import States as states
 from Data import ProjectionsData as projections
 
-#get for use in starting point for future growth
+# get for use in starting point for future growth
 response = requests.get("https://corona.lmao.ninja/v2/states")
 if response.status_code == 200:
     stateDict = response.json()
@@ -14,10 +14,11 @@ else:
     print("Error, server responded with status code of " + str(response.status_code))
     exit(-1)
 
-#sort the list of dictionaries alphabeticalls in lists indexes
+# sort the list of dictionaries alphabetically in list indexes
 cur = sorted(stateDict, key=lambda j: j['state'])
 
-#calculates growth rate given historical data
+
+# calculates growth rate given historical data
 def calculate(data):
     # index 0 = 30 days ago
     k = 1
@@ -43,7 +44,8 @@ def calculate(data):
 
     return stats
 
-#calculates future expected cases and deaths using prior rate generated earlier
+
+# calculates future expected cases and deaths using prior rate generated earlier
 def future(rate, data, type):
     today = data[29]
     futures = []
@@ -57,7 +59,7 @@ def future(rate, data, type):
         k = k + 1
 
     out = [futures[0], futures[14], futures[29]]
-    #returns list with future data for 1, 14, and 30 days
+    # returns list with future data for 1, 14, and 30 days
     return out
 
 
@@ -72,7 +74,7 @@ i = 0
 
 master = []
 
-#populate with data with various rate data pulls
+# populate with data with various rate data pulls
 for el in list(states.states_abbrev.values()):
     cases = response[el]["cases"]
     deaths = response[el]["deaths"]

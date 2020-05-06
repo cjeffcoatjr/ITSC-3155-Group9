@@ -7,15 +7,15 @@ import dash_html_components as html
 
 app = dash.Dash()  # instate the dashboard
 
-interactive_map = base.fig  # From the map, pull a plotly object
-weekly_interactive_projections = projections.weekly_fig  # And again
-monthly_interactive_projections = projections.monthly_fig  # And one more time
+interactive_map = base.fig  # from the map, pull a plotly object
+weekly_interactive_projections = projections.weekly_fig  # and again
+monthly_interactive_projections = projections.monthly_fig  # and one more time
 
-df = base.df  # From the map, pull the df
-weekly_df = projections.weekly_df  # And again
-monthly_df = projections.monthly_df  # And one more time
+df = base.df  # from the map, pull the df
+weekly_df = projections.weekly_df  # and again
+monthly_df = projections.monthly_df  # and one more time
 
-# Layout
+# self-explanatory html
 app.layout = html.Div(children=[
     html.H1(children='Interactive Dashboard',
             style={
@@ -86,7 +86,8 @@ app.layout = html.Div(children=[
 
 ])
 
-#callback for setting first map to different sources for z index on chloropleth
+
+# callback for setting first map to different sources for z index on chloropleth
 @app.callback(
     dash.dependencies.Output('map', 'figure'),
     [dash.dependencies.Input('select-data', 'value')])
@@ -112,7 +113,8 @@ def update_output_map(value):
 
     return fig
 
-#callback for updating weekly generated map data's z index on chloropleth
+
+# callback for updating weekly generated map data's z index on chloropleth
 @app.callback(
     dash.dependencies.Output('weekly-map', 'figure'),
     [dash.dependencies.Input('select-weekly-data', 'value')])
@@ -138,7 +140,8 @@ def update_output_weekly_map(value):
 
     return fig
 
-#callback for updating monthly generated map data's z index on chloropleth
+
+# callback for updating monthly generated map data's z index on chloropleth
 @app.callback(
     dash.dependencies.Output('monthly-map', 'figure'),
     [dash.dependencies.Input('select-monthly-data', 'value')])
