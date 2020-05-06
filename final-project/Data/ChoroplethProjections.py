@@ -11,19 +11,19 @@ for col in weekly_df.columns:
 for col in monthly_df.columns:
     monthly_df[col] = monthly_df[col].astype(str)
 
-weekly_df['text'] = 'Total Projected Cases Tomorrow: ' + weekly_df['cases'][0] + '<br>' + \
-                    'Total Projected Cases in 14 days: ' + weekly_df['cases'][1] + '<br>' + \
-                    'Total Projected Cases in 30 days: ' + weekly_df['cases'][2] + '<br>' + \
-                    'Total Projected Deaths Tomorrow: ' + weekly_df['deaths'][0] + '<br>' + \
-                    'Total Projected Deaths in 14 days: ' + weekly_df['deaths'][0] + '<br>' + \
-                    'Total Projected Deaths in 30 days: ' + weekly_df['deaths'][0]
+weekly_df['text'] = 'Total Projected Cases Tomorrow: ' + weekly_df['casesTomorrow'] + '<br>' + \
+                    'Total Projected Cases in 14 days: ' + weekly_df['casesIn14'] + '<br>' + \
+                    'Total Projected Cases in 30 days: ' + weekly_df['casesIn30'] + '<br>' + \
+                    'Total Projected Deaths Tomorrow: ' + weekly_df['deathsTomorrow'] + '<br>' + \
+                    'Total Projected Deaths in 14 days: ' + weekly_df['deathsIn14'] + '<br>' + \
+                    'Total Projected Deaths in 30 days: ' + weekly_df['deathsIn30']
 
-monthly_df['text'] = 'Total Projected Cases Tomorrow: ' + monthly_df['cases'][0] + '<br>' + \
-                     'Total Projected Cases in 14 days: ' + monthly_df['cases'][1] + '<br>' + \
-                     'Total Projected Cases in 30 days: ' + monthly_df['cases'][2] + '<br>' + \
-                     'Total Projected Deaths Tomorrow: ' + monthly_df['deaths'][0] + '<br>' + \
-                     'Total Projected Deaths in 14 days: ' + monthly_df['deaths'][0] + '<br>' + \
-                     'Total Projected Deaths in 30 days: ' + monthly_df['deaths'][0]
+monthly_df['text'] = 'Total Projected Cases Tomorrow: ' + monthly_df['casesTomorrow'] + '<br>' + \
+                     'Total Projected Cases in 14 days: ' + monthly_df['casesIn14'] + '<br>' + \
+                     'Total Projected Cases in 30 days: ' + monthly_df['casesIn30'] + '<br>' + \
+                     'Total Projected Deaths Tomorrow: ' + monthly_df['deathsTomorrow'] + '<br>' + \
+                     'Total Projected Deaths in 14 days: ' + monthly_df['deathsIn14'] + '<br>' + \
+                     'Total Projected Deaths in 30 days: ' + monthly_df['deathsIn30']
 
 weekly_fig = go.Figure(data=go.Choropleth(
     locations=weekly_df['state'],

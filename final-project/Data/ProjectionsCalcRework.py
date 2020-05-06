@@ -80,10 +80,22 @@ for el in list(states.states.values()):
     outWeekDeath = future(ratesDeath[0], deaths, 'deaths')
     outMonthDeath = future(ratesDeath[1], deaths, 'deaths')
 
-    parDict = {'state': el, 'cases': outWeekCase, 'deaths': outWeekDeath}
+    parDict = {'state': el,
+               'casesTomorrow': outWeekCase[0],
+               'casesIn14': outWeekCase[1],
+               'casesIn30': outWeekCase[2],
+               'deathsTomorrow': outWeekDeath[0],
+               'deathsIn14': outWeekDeath[1],
+               'deathsIn30': outWeekDeath[2]}
     weekly.append(parDict)
 
-    parDict = {'state': el, 'cases': outMonthCase, 'deaths': outMonthDeath}
+    parDict = {'state': el,
+               'casesTomorrow': outMonthCase[0],
+               'casesIn14': outMonthCase[1],
+               'casesIn30': outMonthCase[2],
+               'deathsTomorrow': outMonthDeath[0],
+               'deathsIn14': outMonthDeath[1],
+               'deathsIn30': outMonthDeath[2]}
     monthly.append(parDict)
 
 # print(weekly)
