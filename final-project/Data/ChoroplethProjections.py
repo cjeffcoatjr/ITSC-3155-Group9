@@ -34,7 +34,7 @@ weekly_fig = go.Figure(data=go.Choropleth(
     autocolorscale=False,
     text=weekly_df['text'],  # hover text
     marker_line_color='white',  # line markers between states
-    colorbar_title="Cases"
+    colorbar_title="Cases Tomorrow"
 ))
 
 weekly_fig.update_layout(
@@ -52,7 +52,7 @@ monthly_fig = go.Figure(data=go.Choropleth(
     autocolorscale=False,
     text=monthly_df['text'],  # hover text
     marker_line_color='white',  # line markers between states
-    colorbar_title="Cases"
+    colorbar_title="Cases Tomorrow"
 ))
 
 monthly_fig.update_layout(
