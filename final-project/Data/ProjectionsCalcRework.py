@@ -64,9 +64,8 @@ cases = []
 
 response = projections.response
 
-weekly = {}
-monthly = {}
-total = {}
+weekly = []
+monthly = []
 i = 0
 
 master = []
@@ -76,47 +75,16 @@ for el in list(states.states.values()):
 
     ratesDeath = calculate(deaths)
     ratesCase = calculate(cases)
-    outMonthCase = future(ratesCase[1], cases, 'cases')
     outWeekCase = future(ratesCase[0], cases, 'cases')
+    outMonthCase = future(ratesCase[1], cases, 'cases')
     outWeekDeath = future(ratesDeath[0], deaths, 'deaths')
     outMonthDeath = future(ratesDeath[1], deaths, 'deaths')
-    parDict = {}
-    parDict['state'] = el
-    parDict['weeklyCases1Day'] = outWeekCase[0]
-    parDict['weeklyCases14Day'] = outWeekCase[1]
-    parDict['weeklyCases30Day'] = outWeekCase[2]
-    parDict['monthlyCases1Day'] = outMonthCase[0]
-    parDict['monthlyCases14Day'] = outMonthCase[1]
-    parDict['monthlyCases30Day'] = outMonthCase[2]
 
-    parDict['weeklyDeaths1Day'] = outWeekDeath[0]
-    parDict['weeklyDeaths14Day'] = outWeekDeath[1]
-    parDict['weeklyDeaths30Day'] = outWeekDeath[2]
+    parDict = {'state': el, 'cases': outWeekCase, 'deaths': outWeekDeath}
+    weekly.append(parDict)
 
-    parDict['monthlyDeaths1Day'] = outMonthDeath[0]
-    parDict['monthlyDeaths14Day'] = outMonthDeath[1]
-    parDict['monthlyDeaths30Day'] = outMonthDeath[2]
-    master.append(parDict)
-    # weekly['state'] = el
-    # weekly['cases'] = outWeekCase
-    # weekly['deaths'] = outWeekDeath
-    #
-    # monthly['state'] = el
-    # monthly['cases'] = outWeekCase
-    # monthly['deaths'] = outWeekDeath
-    #
-    # total['weekly'] = weekly
-    # total['monthly'] = monthly
+    parDict = {'state': el, 'cases': outMonthCase, 'deaths': outMonthDeath}
+    monthly.append(parDict)
 
-print(total)
-
-# for el in abrev:
-#     print("State of " + el)
-#     print("Cases in 14 days")
-#     print(masterList[el][0][1])
-#     print("Cases in 30 days")
-#     print(masterList[el][0][2])
-#     print("Deaths in 14 days")
-#     print(masterList[el][1][1])
-#     print("deaths in 30 days")
-#     print(masterList[el][1][2])
+# print(weekly)
+# print(monthly)
