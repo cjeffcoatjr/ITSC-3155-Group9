@@ -88,9 +88,9 @@ app.layout = html.Div(children=[
 
 
 @app.callback(
-    [dash.dependencies.Output('map', 'figure'), dash.dependencies.Output('weekly-map', 'figure')],
-    [dash.dependencies.Input('select-data', 'value'), dash.dependencies.Input('select-weekly-data', 'value')])
-def update_output(value):
+    dash.dependencies.Output('map', 'figure'),
+    [dash.dependencies.Input('select-data', 'value')])
+def update_output_a(value):
     fig = go.Figure(data=go.Choropleth(
         locations=df['state'],
         z=df[value].astype(int),
@@ -112,5 +112,56 @@ def update_output(value):
 
     return fig
 
+
+@app.callback(
+    dash.dependencies.Output('weekly-map', 'figure'),
+    [dash.dependencies.Input('select-weekly-data', 'value')])
+def update_output_b(value):
+    fig = go.Figure(data=go.Choropleth(
+        locations=weekly_df['state'],
+        z=weekly_df[value].astype(int),
+        locationmode='USA-states',
+        colorscale='Reds',
+        autocolorscale=False,
+        text=weekly_df['text'],  # hover text
+        marker_line_color='white',  # line markers between states
+        colorbar_title=value
+
+    ), )
+    fig.update_layout(
+        geo=dict(
+            scope='usa',
+            projection=go.layout.geo.Projection(type='albers usa'),
+            showlakes=False),
+
+    )
+
+    return fig
+
+
+@app.callback(
+    dash.dependencies.Output('monthly-map', 'figure'),
+    [dash.dependencies.Input('select-monthly-data', 'value')])
+def update_output_b(value):
+    fig = go.Figure(data=go.Choropleth(
+        locations=monthly_df['state'],
+        z=monthly_df[value].astype(int),
+        locationmode='USA-states',
+        colorscale='Reds',
+        autocolorscale=False,
+        text=monthly_df['text'],  # hover text
+        marker_line_color='white',  # line markers between states
+        colorbar_title=value
+
+    ), )
+    fig.update_layout(
+        geo=dict(
+            scope='usa',
+            projection=go.layout.geo.Projection(type='albers usa'),
+            showlakes=False),
+
+    )
+
+    return fig
 
 app.run_server()
