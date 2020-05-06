@@ -3,7 +3,7 @@ import numpy as np
 from Data import States as states
 
 response = {}
-for state in states.stateList:
+for state in states.states_full:
     tmp_state = state.replace(" ", "%20").lower()
     tmp_response = requests.get(("https://disease.sh/v2/historical/usacounties/" + tmp_state + "?lastdays=30"))
     if tmp_response.status_code == 200:
@@ -20,7 +20,7 @@ for state in states.stateList:
         cases = cases.tolist()
         deaths = deaths.tolist()
         tmp_dict = {'cases': cases, 'deaths': deaths}
-        abbrev = states.states[state]
+        abbrev = states.states_abbrev[state]
         response[abbrev] = tmp_dict
     else:
         print("Error, server responded with status code of " + str(tmp_response.status_code))

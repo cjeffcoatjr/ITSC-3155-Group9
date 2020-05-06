@@ -1,19 +1,9 @@
 import plotly.graph_objects as go
-import requests
-import pandas as pd  # Load data frame and tidy it.
-from Data import States as states
+import pandas as pd
+from Data import BaseData as data
 
-response = requests.get("https://corona.lmao.ninja/v2/states")
-if response.status_code == 200:
-    stateDict = response.text
-    for state in states.stateList:
-        abbrev = states.states[state]
-        stateDict = stateDict.replace(state, abbrev)
-    stateDict = stateDict.replace("West VA", "WV")  # Fix some funsies
-else:
-    print("Error, server responded with status code of " + str(response.status_code))
-    exit(-1)
-df = pd.read_json(stateDict)
+df = pd.read_json(data.stateDict)
+
 for col in df.columns:
     df[col] = df[col].astype(str)
 
@@ -39,11 +29,3 @@ fig.update_layout(
         projection=go.layout.geo.Projection(type='albers usa'),
         showlakes=False),
 )
-
-
-def get_fig():
-    return fig
-
-
-def get_df():
-    return df

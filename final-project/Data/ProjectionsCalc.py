@@ -1,4 +1,3 @@
-# index 0 = 30 days ago
 from statistics import mean
 import requests
 from Data import States as states
@@ -7,9 +6,9 @@ from Data import ProjectionsData as projections
 response = requests.get("https://corona.lmao.ninja/v2/states")
 if response.status_code == 200:
     stateDict = response.json()
-    for state in stateDict:  # state
-        if state['state'] not in states.forbidden_states:
-            state['state'] = states.states[state['state']]
+    for el in stateDict:  # state
+        if el['state'] not in states.forbidden_states:
+            el['state'] = states.states_abbrev[el['state']]
 else:
     print("Error, server responded with status code of " + str(response.status_code))
     exit(-1)
@@ -18,6 +17,7 @@ cur = sorted(stateDict, key=lambda j: j['state'])
 
 
 def calculate(data):
+    # index 0 = 30 days ago
     k = 1
     daily_growth = []
     past = data[0]
@@ -68,7 +68,7 @@ monthly = []
 i = 0
 
 master = []
-for el in list(states.states.values()):
+for el in list(states.states_abbrev.values()):
     cases = response[el]["cases"]
     deaths = response[el]["deaths"]
 

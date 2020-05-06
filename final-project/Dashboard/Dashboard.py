@@ -1,19 +1,19 @@
 import dash
 import plotly.graph_objects as go
-from Data import Choropleth as data
-from Data import ChoroplethProjections as projections
+from Maps import ChoroplethBase as base
+from Maps import ChoroplethProjections as projections
 import dash_core_components as dcc
 import dash_html_components as html
 
 app = dash.Dash()  # instate the dashboard
 
-interactive_map = data.get_fig()  # From the data, pull a plotly object
-weekly_interactive_projections = projections.get_weekly_fig()  # And again
-monthly_interactive_projections = projections.get_monthly_fig()  # And one more time
+interactive_map = base.fig  # From the map, pull a plotly object
+weekly_interactive_projections = projections.weekly_fig  # And again
+monthly_interactive_projections = projections.monthly_fig  # And one more time
 
-df = data.get_df()  # From the data, pull the df
-weekly_df = projections.get_weekly_df()  # And again
-monthly_df = projections.get_monthly_df()  # And one more time
+df = base.df  # From the map, pull the df
+weekly_df = projections.weekly_df  # And again
+monthly_df = projections.monthly_df  # And one more time
 
 # Layout
 app.layout = html.Div(children=[
@@ -90,7 +90,7 @@ app.layout = html.Div(children=[
 @app.callback(
     dash.dependencies.Output('map', 'figure'),
     [dash.dependencies.Input('select-data', 'value')])
-def update_output_a(value):
+def update_output_map(value):
     fig = go.Figure(data=go.Choropleth(
         locations=df['state'],
         z=df[value].astype(int),
@@ -116,7 +116,7 @@ def update_output_a(value):
 @app.callback(
     dash.dependencies.Output('weekly-map', 'figure'),
     [dash.dependencies.Input('select-weekly-data', 'value')])
-def update_output_b(value):
+def update_output_weekly_map(value):
     fig = go.Figure(data=go.Choropleth(
         locations=weekly_df['state'],
         z=weekly_df[value].astype(int),
@@ -142,7 +142,7 @@ def update_output_b(value):
 @app.callback(
     dash.dependencies.Output('monthly-map', 'figure'),
     [dash.dependencies.Input('select-monthly-data', 'value')])
-def update_output_b(value):
+def update_output_monthly_map(value):
     fig = go.Figure(data=go.Choropleth(
         locations=monthly_df['state'],
         z=monthly_df[value].astype(int),

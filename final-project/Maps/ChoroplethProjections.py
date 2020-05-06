@@ -1,5 +1,5 @@
 import plotly.graph_objects as go
-import pandas as pd  # Load data frame and tidy it.
+import pandas as pd
 from Data import ProjectionsCalc as projections
 import json
 
@@ -61,19 +61,3 @@ monthly_fig.update_layout(
         projection=go.layout.geo.Projection(type='albers usa'),
         showlakes=False),
 )
-
-
-def get_weekly_fig():
-    return weekly_fig
-
-
-def get_monthly_fig():
-    return monthly_fig
-
-
-def get_weekly_df():
-    return weekly_df
-
-
-def get_monthly_df():
-    return monthly_df
