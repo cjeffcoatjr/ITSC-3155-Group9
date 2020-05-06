@@ -63,8 +63,8 @@ monthly_df.update_layout(
 
 
 def get_weekly_fig():
-    return weekly_df
+    return weekly_fig
 
 
 def get_monthly_fig():
-    return monthly_df
+    return monthly_fig
