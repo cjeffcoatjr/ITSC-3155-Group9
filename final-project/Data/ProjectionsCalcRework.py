@@ -100,3 +100,4 @@ for el in list(states.states.values()):
 
 # print(weekly)
 # print(monthly)
+

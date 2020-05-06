@@ -1,8 +1,11 @@
 import plotly.graph_objects as go
 import pandas as pd  # Load data frame and tidy it.
 from Data import ProjectionsCalcRework as projections
+import json
 
-weekly_df = pd.read_json(projections.weekly)
+print(projections.weekly)
+obj = json.dumps(projections.weekly)
+weekly_df = pd.read_json(obj)
 monthly_df = pd.read_json(projections.monthly)
 
 for col in weekly_df.columns:
