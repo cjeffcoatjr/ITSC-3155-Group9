@@ -86,7 +86,7 @@ app.layout = html.Div(children=[
 
 ])
 
-
+#callback for setting first map to different sources for z index on chloropleth
 @app.callback(
     dash.dependencies.Output('map', 'figure'),
     [dash.dependencies.Input('select-data', 'value')])
@@ -112,7 +112,7 @@ def update_output_map(value):
 
     return fig
 
-
+#callback for updating weekly generated map data's z index on chloropleth
 @app.callback(
     dash.dependencies.Output('weekly-map', 'figure'),
     [dash.dependencies.Input('select-weekly-data', 'value')])
@@ -138,7 +138,7 @@ def update_output_weekly_map(value):
 
     return fig
 
-
+#callback for updating monthly generated map data's z index on chloropleth
 @app.callback(
     dash.dependencies.Output('monthly-map', 'figure'),
     [dash.dependencies.Input('select-monthly-data', 'value')])

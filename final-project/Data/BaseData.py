@@ -1,6 +1,6 @@
 import requests
 from Data import States as states
-
+#pulls data
 response = requests.get("https://corona.lmao.ninja/v2/states")
 if response.status_code == 200:
     stateDict = response.text
