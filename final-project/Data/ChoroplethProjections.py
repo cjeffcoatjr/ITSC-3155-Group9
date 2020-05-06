@@ -12,7 +12,7 @@ for col in weekly_df.columns:
 for col in monthly_df.columns:
     monthly_df[col] = monthly_df[col].astype(str)
 
-weekly_df['text'] = 'Total Cases: ' + weekly_df['cases'] + '<br>' + \
+weekly_df['text'] = 'Total Projected Cases Tomorrow: ' + weekly_df['cases'] + '<br>' + \
              'Total Deaths: ' + weekly_df['deaths']
 
 fig = go.Figure(data=go.Choropleth(

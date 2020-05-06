@@ -6,6 +6,7 @@ from Data import States as states
 response = requests.get("https://corona.lmao.ninja/v2/states")
 if response.status_code == 200:
     stateDict = response.text
+    print (stateDict)
     for state in states.stateList:
         abbrev = states.states[state]
         stateDict = stateDict.replace(state, abbrev)
