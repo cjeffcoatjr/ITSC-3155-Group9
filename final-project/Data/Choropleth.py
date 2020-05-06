@@ -44,3 +44,6 @@ fig.update_layout(
 
 def get_fig():
     return fig
+
+def get_df():
+    return df

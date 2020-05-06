@@ -1,6 +1,6 @@
 import plotly.graph_objects as go
 import pandas as pd  # Load data frame and tidy it.
-from Data import ProjectionsCalcRework as projections
+from Data import ProjectionsCalc as projections
 import json
 
 weekly_df = pd.read_json(json.dumps(projections.weekly))
@@ -62,9 +62,18 @@ monthly_fig.update_layout(
         showlakes=False),
 )
 
+
 def get_weekly_fig():
     return weekly_fig
 
 
 def get_monthly_fig():
     return monthly_fig
+
+
+def get_weekly_df():
+    return weekly_df
+
+
+def get_monthly_df():
+    return monthly_df
