@@ -3,10 +3,8 @@ import pandas as pd  # Load data frame and tidy it.
 from Data import ProjectionsCalcRework as projections
 import json
 
-print(projections.weekly)
-obj = json.dumps(projections.weekly)
-weekly_df = pd.read_json(obj)
-monthly_df = pd.read_json(projections.monthly)
+weekly_df = pd.read_json(json.dumps(projections.weekly))
+monthly_df = pd.read_json(json.dumps(projections.monthly))
 
 for col in weekly_df.columns:
     weekly_df[col] = weekly_df[col].astype(str)
@@ -30,7 +28,7 @@ monthly_df['text'] = 'Total Projected Cases Tomorrow: ' + monthly_df['casesTomor
 
 weekly_fig = go.Figure(data=go.Choropleth(
     locations=weekly_df['state'],
-    z=weekly_df['cases'][0].astype(int),
+    z=weekly_df['casesTomorrow'].astype(int),
     locationmode='USA-states',
     colorscale='Reds',
     autocolorscale=False,
@@ -39,7 +37,7 @@ weekly_fig = go.Figure(data=go.Choropleth(
     colorbar_title="Cases"
 ))
 
-weekly_df.update_layout(
+weekly_fig.update_layout(
     geo=dict(
         scope='usa',
         projection=go.layout.geo.Projection(type='albers usa'),
@@ -48,7 +46,7 @@ weekly_df.update_layout(
 
 monthly_fig = go.Figure(data=go.Choropleth(
     locations=monthly_df['state'],
-    z=monthly_df['cases'][0].astype(int),
+    z=monthly_df['casesTomorrow'].astype(int),
     locationmode='USA-states',
     colorscale='Reds',
     autocolorscale=False,
@@ -57,13 +55,12 @@ monthly_fig = go.Figure(data=go.Choropleth(
     colorbar_title="Cases"
 ))
 
-monthly_df.update_layout(
+monthly_fig.update_layout(
     geo=dict(
         scope='usa',
         projection=go.layout.geo.Projection(type='albers usa'),
         showlakes=False),
 )
-
 
 def get_weekly_fig():
     return weekly_fig
