@@ -88,8 +88,8 @@ app.layout = html.Div(children=[
 
 
 @app.callback(
-    dash.dependencies.Output('map', 'figure'),
-    [dash.dependencies.Input('select-data', 'value')])
+    [dash.dependencies.Output('map', 'figure'), dash.dependencies.Output('weekly-map', 'figure')],
+    [dash.dependencies.Input('select-data', 'value'), dash.dependencies.Input('select-weekly-data', 'value')])
 def update_output(value):
     fig = go.Figure(data=go.Choropleth(
         locations=df['state'],
