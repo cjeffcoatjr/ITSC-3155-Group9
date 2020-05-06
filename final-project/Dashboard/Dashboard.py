@@ -59,15 +59,15 @@ app.layout = html.Div(children=[
             {'label': 'Cases in 14 days', 'value': 'casesIn14'},
             {'label': 'Cases in 30 days', 'value': 'casesIn30'},
             {'label': 'Deaths Tomorrow', 'value': 'deathsTomorrow'},
-            {'label': 'Cases in 14 days', 'value': 'deathsIn14'},
-            {'label': 'Cases in 30 days', 'value': 'deathsIn30'}
+            {'label': 'Deaths in 14 days', 'value': 'deathsIn14'},
+            {'label': 'Deaths in 30 days', 'value': 'deathsIn30'}
         ],
         value='casesTomorrow'
     ),
     html.Hr(style={'color': '#7FDBFF'}),
     html.H3('This interactive map visualizes possible future COVID-19 impact across the United States of America and '
             'Wyoming based on calculations made using the growth rate over the past month.',
-    style={'color': '#df2e56'}),
+            style={'color': '#df2e56'}),
     dcc.Graph(id='monthly-map', figure=monthly_interactive_projections, ),
     html.Br(),
     html.Div("Data Options", id="monthly-data-options"),
@@ -78,8 +78,8 @@ app.layout = html.Div(children=[
             {'label': 'Cases in 14 days', 'value': 'casesIn14'},
             {'label': 'Cases in 30 days', 'value': 'casesIn30'},
             {'label': 'Deaths Tomorrow', 'value': 'deathsTomorrow'},
-            {'label': 'Cases in 14 days', 'value': 'deathsIn14'},
-            {'label': 'Cases in 30 days', 'value': 'deathsIn30'}
+            {'label': 'Deaths in 14 days', 'value': 'deathsIn14'},
+            {'label': 'Deaths in 30 days', 'value': 'deathsIn30'}
         ],
         value='casesTomorrow'
     )
@@ -163,5 +163,6 @@ def update_output_b(value):
     )
 
     return fig
+
 
 app.run_server()
