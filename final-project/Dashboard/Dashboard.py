@@ -1,6 +1,5 @@
 import dash
 import plotly.graph_objects as go
-from dash.dependencies import Input, Output
 from Data import Choropleth as data
 from Data import ChoroplethProjections as projections
 import dash_core_components as dcc
@@ -32,7 +31,7 @@ app.layout = html.Div(children=[
             style={'color': '#df2e56'}),
     dcc.Graph(id='map', figure=interactive_map, ),
     html.Br(),
-    html.Div("Data Options", id="dd-output-container"),
+    html.Div("Data Options", id="data-options"),
     dcc.Dropdown(
         id='select-data',
         options=[
@@ -45,6 +44,44 @@ app.layout = html.Div(children=[
             {'label': 'Tests Per Million', 'value': 'testsPerOneMillion'}
         ],
         value='cases'
+    ),
+    html.Hr(style={'color': '#7FDBFF'}),
+    html.H3('This interactive map visualizes possible future COVID-19 impact across the United States of America and '
+            'Wyoming based on calculations made using the growth rate over the past week.',
+            style={'color': '#df2e56'}),
+    dcc.Graph(id='weekly-map', figure=weekly_interactive_projections, ),
+    html.Br(),
+    html.Div("Data Options", id="weekly-data-options"),
+    dcc.Dropdown(
+        id='select-weekly-data',
+        options=[
+            {'label': 'Cases Tomorrow', 'value': 'casesTomorrow'},
+            {'label': 'Cases in 14 days', 'value': 'casesIn14'},
+            {'label': 'Cases in 30 days', 'value': 'casesIn30'},
+            {'label': 'Deaths Tomorrow', 'value': 'deathsTomorrow'},
+            {'label': 'Cases in 14 days', 'value': 'deathsIn14'},
+            {'label': 'Cases in 30 days', 'value': 'deathsIn30'}
+        ],
+        value='casesTomorrow'
+    ),
+    html.Hr(style={'color': '#7FDBFF'}),
+    html.H3('This interactive map visualizes possible future COVID-19 impact across the United States of America and '
+            'Wyoming based on calculations made using the growth rate over the past month.',
+    style={'color': '#df2e56'}),
+    dcc.Graph(id='monthly-map', figure=monthly_interactive_projections, ),
+    html.Br(),
+    html.Div("Data Options", id="monthly-data-options"),
+    dcc.Dropdown(
+        id='select-monthly-data',
+        options=[
+            {'label': 'Cases Tomorrow', 'value': 'casesTomorrow'},
+            {'label': 'Cases in 14 days', 'value': 'casesIn14'},
+            {'label': 'Cases in 30 days', 'value': 'casesIn30'},
+            {'label': 'Deaths Tomorrow', 'value': 'deathsTomorrow'},
+            {'label': 'Cases in 14 days', 'value': 'deathsIn14'},
+            {'label': 'Cases in 30 days', 'value': 'deathsIn30'}
+        ],
+        value='casesTomorrow'
     )
 
 ])
@@ -54,8 +91,6 @@ app.layout = html.Div(children=[
     dash.dependencies.Output('map', 'figure'),
     [dash.dependencies.Input('select-data', 'value')])
 def update_output(value):
-    # layout = go.Layout(
-    #     height: 90px)
     fig = go.Figure(data=go.Choropleth(
         locations=df['state'],
         z=df[value].astype(int),

@@ -3,7 +3,6 @@ from statistics import mean
 import requests
 from Data import States as states
 from Data import ProjectionsData as projections
-import pandas as pd  # Load data frame and tidy it.
 
 response = requests.get("https://corona.lmao.ninja/v2/states")
 if response.status_code == 200:
@@ -100,4 +99,3 @@ for el in list(states.states.values()):
 
 # print(weekly)
 # print(monthly)
-
